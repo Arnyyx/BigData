@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import countDistinct
+from pyspark.sql.functions import *
 
 spark = SparkSession.builder \
     .appName("Cho biết số lượng vận động viên nam tại mỗi kỳ thế vận hội trong thế kỷ 21") \

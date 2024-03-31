@@ -26,7 +26,7 @@ top_countries_athletes_2016 = vdv_olympics_data.filter(vdv_olympics_data['Year']
 print("Thông tin về 7 quốc gia có số lượng vận động viên đông nhất tham gia thế vận hội 2016:")
 top_countries_athletes_2016.show()
 
-# 3.4. Thống kê số lượng vận động viên nam tham gia mỗi kỳ Thế vận hội trong thế kỷ 21
+# Câu 3.5: Số lượng vận động viên nam tham gia mỗi kỳ Thế vận hội trong thế kỷ 21
 male_athletes_by_year = vdv_olympics_data.filter(col('Sex') == 'M').groupBy('Year').agg(count('*').alias('number_of_athletes'))
 print("Số lượng vận động viên nam tham gia mỗi kỳ Thế vận hội trong thế kỷ 21:")
 male_athletes_by_year.show()
