@@ -11,7 +11,6 @@ vdv_olympics_df = spark.read.option("header", "true",).csv("D:/Y3/BigData/BigDat
 qg_noc_df = spark.read.option("header", "true").csv("D:\Y3\BigData\BigData\DeTaiSo14\Data\qg_noc.csv")
 
 joined_df = vdv_olympics_df.join(qg_noc_df, "NOC", "left").select(vdv_olympics_df["*"], qg_noc_df["Country"].alias("Country")).drop("NOC")
-
 winter_df = joined_df.filter((joined_df["Season"] == "Winter") & (joined_df["Height"] != "NA"))
 
 height_stats_by_noc = winter_df.groupBy("Country").agg(

@@ -1,7 +1,8 @@
 from pyspark.sql import SparkSession
+from pyspark.sql.functions import *
 
 spark = SparkSession.builder \
-    .appName("Cho biết schema của bộ dữ liệu, hiển thị số bản ghi của bộ dữ liệu") \
+    .appName("Big Data") \
     .getOrCreate()
 
 vdv_olympics_df = spark.read.csv(r'D:\Y3\BigData\BigData\DeTaiSo14\Data\vdv_olympics.csv', header=True, inferSchema=True)
