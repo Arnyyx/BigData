@@ -8,8 +8,8 @@ spark = SparkSession.builder \
 vdv_olympics_df = spark.read.csv(r'D:\Y3\BigData\BigData\DeTaiSo14\Data\vdv_olympics.csv', header=True, inferSchema=True)
 qg_noc_df = spark.read.csv(r'D:\Y3\BigData\BigData\DeTaiSo14\Data\qg_noc.csv', header=True, inferSchema=True)
 
-result_df = vdv_olympics_df.groupBy("Year").count().orderBy("Year", ascending=False).limit(5)
-print("Số lượng vận động viên tham dự 5 kỳ thế vận hội gần nhất:")
-result_df.show()
+athlete_counts_by_year = vdv_olympics_df.groupBy("Year").agg(countDistinct("ID").alias("AthleteCount"))
+recent_olympics = athlete_counts_by_year.orderBy("Year", ascending=False).limit(5)
+recent_olympics.show()
 
 spark.stop()
